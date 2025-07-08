@@ -8,17 +8,17 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class ProductDTO {
-    private int id;
+    private Long id;
     private String title;
     private String image;
-    private String price;
+    private int price;
     private String description;
     private String brand;
     private String model;
     private String color;
     private String category;
     private boolean popular;
-    private String discount;
+    private int discount;
 
     @Override
     public String toString() {

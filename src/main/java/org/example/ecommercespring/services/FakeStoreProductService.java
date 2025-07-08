@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.List;
 
-@Service
+@Service("fakeStoreProductService")
 public class FakeStoreProductService implements IProductService {
     private final IProductGateway productGateway;
 
@@ -24,5 +24,9 @@ public class FakeStoreProductService implements IProductService {
     @Override
     public List<ProductDTO> getAllProductsByCategory(String type) throws IOException {
         return this.productGateway.getAllProductsByCategory(type);
+    }
+
+    public ProductDTO createProduct(ProductDTO dto) {
+        return null;
     }
 }
