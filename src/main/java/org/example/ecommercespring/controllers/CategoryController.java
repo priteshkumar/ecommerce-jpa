@@ -1,7 +1,10 @@
 package org.example.ecommercespring.controllers;
 
 import org.example.ecommercespring.dto.CategoryDTO;
+import org.example.ecommercespring.dto.ProductDTO;
 import org.example.ecommercespring.services.ICategoryService;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -13,13 +16,21 @@ public class CategoryController {
 
     private final ICategoryService categoryService;
 
-    public CategoryController(ICategoryService categoryService) {
+    public CategoryController(@Qualifier("categoryService") ICategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
     @GetMapping
-    public List<CategoryDTO> getAllCategories() throws IOException {
-        return this.categoryService.getAllCategories();
+    public ResponseEntity<List<CategoryDTO>> getAllCategories() throws IOException {
+        List<CategoryDTO> categoryDTOS =
+                this.categoryService.getAllCategories();
+        return ResponseEntity.ok(categoryDTOS);
+    }
+
+    @PostMapping
+    public ResponseEntity<CategoryDTO> createProduct(@RequestBody CategoryDTO dto) throws Exception {
+        CategoryDTO categoryDTO = this.categoryService.createCategory(dto);
+        return ResponseEntity.ok(categoryDTO);
     }
 
 }
