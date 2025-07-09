@@ -51,4 +51,17 @@ public class ProductService implements IProductService {
                 .orElseThrow(() -> new Exception("Product not found"));
         return ProductMapper.toProductWithCategoryDTO(product);
     }
+
+    @Override
+    public List<ProductDTO> findByBrandAndPrice(int price, String brand) throws Exception {
+        List<Product> products = productRepository.findByBrandAndPrice(price,
+                brand);
+        return products.stream().map(product -> ProductMapper.toDto(product)).toList();
+    }
+
+    @Override
+    public List<ProductDTO> findBykeyword(String keyword) throws Exception {
+        List<Product> products = productRepository.searchFullText(keyword);
+        return products.stream().map(product -> ProductMapper.toDto(product)).toList();
+    }
 }

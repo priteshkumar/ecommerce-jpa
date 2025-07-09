@@ -44,8 +44,18 @@ public class ProductController {
     @GetMapping("/{id}/details")
     public ResponseEntity<ProductWithCategoryDTO> getProductWithCategory(@PathVariable long id) throws Exception {
 
-        ProductWithCategoryDTO dto =  productService.getProductWithCategory(id);
+        ProductWithCategoryDTO dto = productService.getProductWithCategory(id);
         return ResponseEntity.ok(dto);
     }
 
+    @GetMapping
+    public List<ProductDTO> getProductsByBrandAndPrice(@RequestParam(name =
+            "price") int price, @RequestParam(name = "brand") String brand) throws Exception {
+        return this.productService.findByBrandAndPrice(price, brand);
+    }
+
+    @GetMapping("/search")
+    public List<ProductDTO> searchProducts(@RequestParam(name = "keyword") String keyword) throws Exception {
+        return this.productService.findBykeyword(keyword);
+    }
 }

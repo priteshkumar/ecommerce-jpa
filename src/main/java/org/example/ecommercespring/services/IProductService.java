@@ -14,4 +14,6 @@ public interface IProductService {
 
     ProductDTO createProduct(ProductDTO dto) throws Exception;
     ProductWithCategoryDTO getProductWithCategory(Long id) throws  Exception;
+    List<ProductDTO> findByBrandAndPrice(int price,String brand) throws Exception;
+    List<ProductDTO> findBykeyword(String keyword) throws Exception;
 }

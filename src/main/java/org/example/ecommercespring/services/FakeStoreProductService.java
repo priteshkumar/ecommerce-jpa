@@ -35,4 +35,14 @@ public class FakeStoreProductService implements IProductService {
     public ProductWithCategoryDTO getProductWithCategory(Long id) throws Exception {
         return null;
     }
+
+    @Override
+    public List<ProductDTO> findByBrandAndPrice(int price, String brand) throws Exception {
+        return List.of();
+    }
+
+    @Override
+    public List<ProductDTO> findBykeyword(String keyword) throws Exception {
+        return List.of();
+    }
 }
