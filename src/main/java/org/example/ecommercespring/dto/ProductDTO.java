@@ -16,7 +16,7 @@ public class ProductDTO {
     private String brand;
     private String model;
     private String color;
-    private String category;
+    private Long categoryId;
     private boolean popular;
     private int discount;
 
@@ -31,7 +31,7 @@ public class ProductDTO {
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", color='" + color + '\'' +
-                ", category='" + category + '\'' +
+                ", category='" + categoryId + '\'' +
                 ", popular=" + popular +
                 ", discount='" + discount + '\'' +
                 '}';
