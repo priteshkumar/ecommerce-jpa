@@ -2,6 +2,7 @@ package org.example.ecommercespring.services;
 
 import org.example.ecommercespring.dto.ProductDTO;
 import org.example.ecommercespring.dto.ProductWithCategoryDTO;
+import org.example.ecommercespring.exception.ProductNotFoundException;
 import org.example.ecommercespring.gateway.ICategoryGateway;
 import org.example.ecommercespring.gateway.IProductGateway;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class FakeStoreProductService implements IProductService {
     }
 
     @Override
-    public ProductDTO getProduct(int id) throws IOException {
+    public ProductDTO getProduct(int id) throws ProductNotFoundException, IOException {
         return this.productGateway.getProduct(id);
     }
 
