@@ -13,12 +13,12 @@ import java.io.IOException;
 
 public interface FakeStoreCategoryApi {
 
-    @GET("products/category")
-    Call<FakeStoreCategoryResponseDTO> getAllFakeCategories() throws IOException;
+  @GET("products/category")
+  Call<FakeStoreCategoryResponseDTO> getAllFakeCategories() throws IOException;
 
-    @GET("products/{id}")
-    Call<SingleProductResponseDTO> getProduct(@Path("id") int id);
+  @GET("products/{id}")
+  Call<SingleProductResponseDTO> getProduct(@Path("id") int id);
 
-    @GET("products/category")
-    Call<CategoryProductsResponseDTO> getProductsByCategory(@Query("type") String type);
+  @GET("products/category")
+  Call<CategoryProductsResponseDTO> getProductsByCategory(@Query("type") String type);
 }

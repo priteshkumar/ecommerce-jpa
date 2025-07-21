@@ -12,38 +12,38 @@ import java.util.List;
 
 @Service("fakeStoreProductService")
 public class FakeStoreProductService implements IProductService {
-    private final IProductGateway productGateway;
+  private final IProductGateway productGateway;
 
-    public FakeStoreProductService(IProductGateway productGateway) {
-        this.productGateway = productGateway;
-    }
+  public FakeStoreProductService(IProductGateway productGateway) {
+    this.productGateway = productGateway;
+  }
 
-    @Override
-    public ProductDTO getProduct(int id) throws ProductNotFoundException, IOException {
-        return this.productGateway.getProduct(id);
-    }
+  @Override
+  public ProductDTO getProduct(int id) throws ProductNotFoundException, IOException {
+    return this.productGateway.getProduct(id);
+  }
 
-    @Override
-    public List<ProductDTO> getAllProductsByCategory(String type) throws IOException {
-        return this.productGateway.getAllProductsByCategory(type);
-    }
+  @Override
+  public List<ProductDTO> getAllProductsByCategory(String type) throws IOException {
+    return this.productGateway.getAllProductsByCategory(type);
+  }
 
-    public ProductDTO createProduct(ProductDTO dto) {
-        return null;
-    }
+  public ProductDTO createProduct(ProductDTO dto) {
+    return null;
+  }
 
-    @Override
-    public ProductWithCategoryDTO getProductWithCategory(Long id) throws Exception {
-        return null;
-    }
+  @Override
+  public ProductWithCategoryDTO getProductWithCategory(Long id) throws Exception {
+    return null;
+  }
 
-    @Override
-    public List<ProductDTO> findByBrandAndPrice(int price, String brand) throws Exception {
-        return List.of();
-    }
+  @Override
+  public List<ProductDTO> findByBrandAndPrice(int price, String brand) throws Exception {
+    return List.of();
+  }
 
-    @Override
-    public List<ProductDTO> findBykeyword(String keyword) throws Exception {
-        return List.of();
-    }
+  @Override
+  public List<ProductDTO> findBykeyword(String keyword) throws Exception {
+    return List.of();
+  }
 }

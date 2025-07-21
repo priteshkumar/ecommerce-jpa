@@ -8,8 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class AddressDTO {
-    private String city;
-    private String street;
-    private String number;
-    private String zipcode;
+  private String city;
+  private String street;
+  private String number;
+  private String zipcode;
 }

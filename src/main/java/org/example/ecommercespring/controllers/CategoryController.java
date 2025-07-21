@@ -15,31 +15,29 @@ import java.util.List;
 @RequestMapping("/api/categories")
 public class CategoryController {
 
-    private final ICategoryService categoryService;
+  private final ICategoryService categoryService;
 
-    public CategoryController(@Qualifier("categoryService") ICategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
+  public CategoryController(@Qualifier("categoryService") ICategoryService categoryService) {
+    this.categoryService = categoryService;
+  }
 
-    @GetMapping
-    public ResponseEntity<List<CategoryDTO>> getAllCategories() throws IOException {
-        List<CategoryDTO> categoryDTOS =
-                this.categoryService.getAllCategories();
-        return ResponseEntity.ok(categoryDTOS);
-    }
+  @GetMapping
+  public ResponseEntity<List<CategoryDTO>> getAllCategories() throws IOException {
+    List<CategoryDTO> categoryDTOS = this.categoryService.getAllCategories();
+    return ResponseEntity.ok(categoryDTOS);
+  }
 
-    @PostMapping
-    public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO dto) throws Exception {
-        CategoryDTO categoryDTO = this.categoryService.createCategory(dto);
-        return ResponseEntity.ok(categoryDTO);
-    }
+  @PostMapping
+  public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO dto) throws Exception {
+    CategoryDTO categoryDTO = this.categoryService.createCategory(dto);
+    return ResponseEntity.ok(categoryDTO);
+  }
 
-    @GetMapping("/{id}/products")
-    public ResponseEntity<AllProductsOfCategoryDTO> getAllProductsOfCategory(@PathVariable Long id) throws Exception {
+  @GetMapping("/{id}/products")
+  public ResponseEntity<AllProductsOfCategoryDTO> getAllProductsOfCategory(@PathVariable Long id)
+      throws Exception {
 
-        AllProductsOfCategoryDTO dto = categoryService.getAllProductsOfCategory(id);
-        return ResponseEntity.ok(dto);
-
-    }
-
+    AllProductsOfCategoryDTO dto = categoryService.getAllProductsOfCategory(id);
+    return ResponseEntity.ok(dto);
+  }
 }

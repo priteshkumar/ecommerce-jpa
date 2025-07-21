@@ -10,11 +10,11 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class CategoryProductsResponseDTO {
-    private String status;
-    private String message;
-    private List<ProductDTO> products;
+  private String status;
+  private String message;
+  private List<ProductDTO> products;
 
-    public List<ProductDTO> getProducts() {
-        return products;
-    }
+  public List<ProductDTO> getProducts() {
+    return products;
+  }
 }

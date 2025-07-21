@@ -10,9 +10,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FakeStoreCategoryResponseDTO {
-    private String status;
+  private String status;
 
-    private String message;
+  private String message;
 
-    private List<String> categories;
+  private List<String> categories;
 }

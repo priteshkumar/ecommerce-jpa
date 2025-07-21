@@ -8,6 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class NameDTO {
-    private String firstname;
-    private String lastname;
+  private String firstname;
+  private String lastname;
 }

@@ -8,19 +8,19 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class SingleUserResponseDTO {
-    private String status;
-    private String message;
-    private UserDTO user;
+  private String status;
+  private String message;
+  private UserDTO user;
 
-    public String getStatus() {
-        return status;
-    }
+  public String getStatus() {
+    return status;
+  }
 
-    public String getMessage() {
-        return message;
-    }
+  public String getMessage() {
+    return message;
+  }
 
-    public UserDTO getUser() {
-        return user;
-    }
+  public UserDTO getUser() {
+    return user;
+  }
 }

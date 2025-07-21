@@ -9,8 +9,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Configuration
 public class OkHttpConfig {
-    @Bean
-    public OkHttpClient okHttpClient() {
-        return new OkHttpClient();
-    }
+  @Bean
+  public OkHttpClient okHttpClient() {
+    return new OkHttpClient();
+  }
 }

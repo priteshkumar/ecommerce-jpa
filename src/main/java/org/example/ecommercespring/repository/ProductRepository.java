@@ -11,13 +11,11 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query("Select p from Product p WHERE p.price > :minPrice AND p.brand = :brand")
-    List<Product> findByBrandAndPrice(
-            @Param("minPrice") int price,
-            @Param("brand") String brandName
-    );
+  @Query("Select p from Product p WHERE p.price > :minPrice AND p.brand = :brand")
+  List<Product> findByBrandAndPrice(@Param("minPrice") int price, @Param("brand") String brandName);
 
-    @Query(value = "Select * FROM product WHERE MATCH(title, description) " +
-            "AGAINST (:keyword)", nativeQuery = true)
-    List<Product> searchFullText(@Param("keyword") String keyword);
+  @Query(
+      value = "Select * FROM product WHERE MATCH(title, description) " + "AGAINST (:keyword)",
+      nativeQuery = true)
+  List<Product> searchFullText(@Param("keyword") String keyword);
 }

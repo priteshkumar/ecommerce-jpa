@@ -14,29 +14,29 @@ import java.time.Instant;
 @Getter
 @Setter
 public class BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //G
-    private long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  // G
+  private long id;
 
-    @CreatedDate
-    @Column(nullable = false, updatable = false)
-    private Instant createdAt;
+  @CreatedDate
+  @Column(nullable = false, updatable = false)
+  private Instant createdAt;
 
-    @LastModifiedDate
-    @Column(nullable = false)
-    private Instant updatedAt;
+  @LastModifiedDate
+  @Column(nullable = false)
+  private Instant updatedAt;
 
-    // This method us automatically called before the entity is saved for the first time.
-    @PrePersist
-    protected void onCreate() {
-        Instant now = Instant.now();
-        this.createdAt = now;
-        this.updatedAt = now;
-    }
+  // This method us automatically called before the entity is saved for the first time.
+  @PrePersist
+  protected void onCreate() {
+    Instant now = Instant.now();
+    this.createdAt = now;
+    this.updatedAt = now;
+  }
 
-    @PreUpdate
-    protected void onUpdate() {
-        this.updatedAt = Instant.now();
-    }
+  @PreUpdate
+  protected void onUpdate() {
+    this.updatedAt = Instant.now();
+  }
 }

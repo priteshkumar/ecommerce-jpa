@@ -15,8 +15,9 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Category extends BaseEntity {
-    @Column(nullable = false, unique = true)
-    private String name;
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    private List<Product> products;
+  @Column(nullable = false, unique = true)
+  private String name;
+
+  @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+  private List<Product> products;
 }

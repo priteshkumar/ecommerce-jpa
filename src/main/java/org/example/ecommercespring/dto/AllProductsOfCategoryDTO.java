@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class AllProductsOfCategoryDTO {
-    private Long categoryId;
-    private String name;
-    private List<ProductDTO> productDTOList;
+  private Long categoryId;
+  private String name;
+  private List<ProductDTO> productDTOList;
 }

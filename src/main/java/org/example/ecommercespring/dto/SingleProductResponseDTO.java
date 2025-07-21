@@ -8,11 +8,11 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class SingleProductResponseDTO {
-    private String status;
-    private String message;
-    private ProductDTO product;
+  private String status;
+  private String message;
+  private ProductDTO product;
 
-    public ProductDTO getProduct() {
-        return product;
-    }
+  public ProductDTO getProduct() {
+    return product;
+  }
 }
