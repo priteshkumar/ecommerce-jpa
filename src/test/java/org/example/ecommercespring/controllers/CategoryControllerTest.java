@@ -2,7 +2,9 @@ package org.example.ecommercespring.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.ws.rs.core.MediaType;
+import org.example.ecommercespring.dto.AllProductsOfCategoryDTO;
 import org.example.ecommercespring.dto.CategoryDTO;
+import org.example.ecommercespring.dto.ProductDTO;
 import org.example.ecommercespring.exception.GlobalExceptionHandler;
 import org.example.ecommercespring.services.ICategoryService;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +20,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -73,11 +76,39 @@ public class CategoryControllerTest {
   void createCategory_shouldCreateCategory() throws Exception {
     CategoryDTO categoryDTO = CategoryDTO.builder().name("Electronics").build();
     when(categoryService.createCategory(any(CategoryDTO.class))).thenReturn(categoryDTO);
-    //String content = "{\"name\":\"Electronics\"}";
+    // String content = "{\"name\":\"Electronics\"}";
     String content = mapper.writeValueAsString(categoryDTO);
     mockMvc
         .perform(post("/api/categories").contentType(MediaType.APPLICATION_JSON).content(content))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.name").value("Electronics"));
+  }
+
+  @Test
+  @DisplayName("GET /api/categories/id/products")
+  void getAllProductsOfCategory_shouldReturnAllProductsInCategory() throws Exception {
+    List<ProductDTO> productDTOS = new ArrayList<>();
+    ProductDTO productDTO =
+        ProductDTO.builder().title("anton checkhov short stories").brand("penguinbooks").build();
+    productDTOS.add(productDTO);
+    AllProductsOfCategoryDTO productsOfCategoryDTO =
+        AllProductsOfCategoryDTO.builder()
+            .categoryId(2l)
+            .name("Books")
+            .productDTOList(productDTOS)
+            .build();
+    when(categoryService.getAllProductsOfCategory(anyLong())).thenReturn(productsOfCategoryDTO);
+    Long categoryId = 2l;
+    mockMvc
+        .perform(
+            get("/api/categories/{id}/products", categoryId)
+                .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.name").value("Books"))
+        .andExpect(jsonPath("$.categoryId").value(2l))
+        .andExpect(jsonPath("$.productDTOList").isArray())
+        .andExpect(jsonPath("$.productDTOList", hasSize(1)))
+        .andExpect(
+            jsonPath("$.productDTOList[0].title").value("anton " + "checkhov short stories"));
   }
 }
