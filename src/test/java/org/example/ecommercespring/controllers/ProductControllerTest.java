@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -22,10 +24,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 debug later
  */
 @WebMvcTest(ProductController.class)
+@MockitoBean(types=JpaMetamodelMappingContext.class)
 public class ProductControllerTest {
   @Autowired private MockMvc mockMvc;
 
-  @MockitoBean private IProductService productService;
+  @MockitoBean(name = "productService")
+  private IProductService productService;
 
   @Test
   @DisplayName("GET /api/products/{id} should return single product")
